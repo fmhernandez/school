@@ -1,0 +1,45 @@
+<div align="center" class="generalTitle">
+  <h1>USERS</h1>
+</div>  
+<%= form_for(@users, :remote => true, :html => { :id => 'users_form', :class=>'formClass'}) do |f| %>
+  <div class="centered_errors">
+    <%= render 'shared/error_message', :object => f.object  %>
+  </div>
+<div class="centered_users">
+  <div class="input_users_field">
+<table border ="0">
+  <tr>
+    <td><%= f.label :name %></td>
+    <td>
+        <%= if @users.errors[:name].any? 
+             f.text_field(:name, :class=>'error_field') 
+        else
+             f.text_field(:name)         
+        end%>
+    </td>
+    <td><%= f.label :password %></td>
+    <td>
+        <%= if @users.errors[:password].any?       
+            f.password_field(:password, :class=>'error_field')
+        else
+            f.password_field(:password)
+        end%>
+    </td>    
+  </tr>
+  <tr>
+    <td><%= f.label :description %></td>
+    <td><%= f.text_field :description %></td>
+  </tr>  
+</table>
+</div>
+  <div class="buttonUser">
+      <a class="button_submit" title="Submit" href="/teacherAfterSubmit" onclick="$('#users_form').submit();" data-remote='true'></a>
+      <a class="button_clear" title="Clear screen" id="clearLink" data-remote='true' href="/userClear"></a>
+      <a class="button_menu" title="Main menu" id="menuink" data-remote='true' href='/mainMenu'></a>
+  </div>   
+  <div class ="table_users_div">
+      <%=table_users%>
+  </div>
+
+<% end %>
+</div>

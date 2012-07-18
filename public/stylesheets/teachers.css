@@ -1,0 +1,35 @@
+.centered_teachers{
+    position: relative;
+    top: 15%;
+    left: 35%;
+}
+.buttonTeacher{
+    position: relative;
+    margin-left: 3%;
+    height: 50px;
+    width: 400px;    
+}
+.tableSubjects_teacher_button{
+    position: relative;
+    margin-left: 10%;    
+}
+.tableTeachers_subject_button{
+    position: relative;
+    margin-left: 0%;        
+}
+.tableSubjects_teacher{
+    position: relative;
+    left: 6%;
+    padding-top: 10px;
+    padding-bottom: 12px;    
+}
+.tableTeachers_subject{
+    position: relative;
+    left: 6%;
+    padding-top: 10px;
+    padding-bottom: 12px;        
+}
+.input_teachers_field{
+    position: relative;
+    left: 6%;    
+}

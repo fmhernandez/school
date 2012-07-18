@@ -1,0 +1,67 @@
+<html>
+  <head>
+  
+<script type="text/javascript">
+
+ 
+ var viewportwidth;
+ var viewportheight;
+  
+ // the more standards compliant browsers (mozilla/netscape/opera/IE7) use window.innerWidth and window.innerHeight
+  
+ if (typeof window.innerWidth != 'undefined')
+ {
+      viewportwidth = window.innerWidth,
+      viewportheight = window.innerHeight
+ }
+  
+// IE6 in standards compliant mode (i.e. with a valid doctype as the first line in the document)
+ 
+ else if (typeof document.documentElement != 'undefined'
+     && typeof document.documentElement.clientWidth !=
+     'undefined' && document.documentElement.clientWidth != 0)
+ {
+       viewportwidth = document.documentElement.clientWidth,
+       viewportheight = document.documentElement.clientHeight
+ }
+  
+ // older versions of IE
+  
+ else
+ {
+       viewportwidth = document.getElementsByTagName('body')[0].clientWidth,
+       viewportheight = document.getElementsByTagName('body')[0].clientHeight
+ }
+//document.write('<p>Your viewport width is '+viewportwidth+'x'+viewportheight+'</p>');
+
+</script>  
+  
+  
+    <title>Dance App</title>
+  </head>
+  <body>
+    <div style="width: 400px;text-align: left;position: absolute;top: 35%;left: 36%;">    
+    <div style="background-color:#908A8A;-moz-border-radius: 10px; -webkit-border-radius: 10px;border-radius: 10px;">
+        <table border="1" width="250">
+          <tr>
+              <td>
+                  <label for="usuario">Usuario</label><br><br>  
+                  <label for="password">Clave</label>                 
+              </td>
+              <td>
+                <input type="text" name="usuario" /><br><br>
+                <input type="password" name="password" />        
+              </td>
+          </tr>
+       </table>
+       <table border="1" width="270">       
+          <tr>
+            <td align="center">
+                <input type="button" name="buttonOk" value="Ok" size="10" />
+            </td>
+          </tr>       
+       </table>
+     </div>
+   </div>   
+  </body>
+</html>

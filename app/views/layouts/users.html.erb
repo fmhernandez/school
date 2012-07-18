@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Wallace & Grommit dancing school</title>
+  <%= stylesheet_link_tag :all %>
+  <%= javascript_include_tag :defaults %>
+  <%= csrf_meta_tag %>
+  <!--<%= stylesheet_link_tag 'blueprint/screen', :media => 'screen' %>-->
+  <%= stylesheet_link_tag 'blueprint/print',  :media => 'print' %>  
+</head>
+<body class="degradado">
+  <div style="position: relative; background: #CCDDCC; height: 8%; width: 13%; left: 45%; top: 1%; border-radius: 15px;">
+    <h2>USERS</h2>
+  </div>  
+  <%= yield %>
+</body>
+</html>

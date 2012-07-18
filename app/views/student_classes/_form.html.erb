@@ -1,0 +1,149 @@
+<%= form_for(@student_class) do |f| %>
+  <div class="centered_errors">
+    <%= render 'shared/error_message', :object => f.object  %>
+  </div>
+<div class="centered_student_classes">
+  <table border ="0">    
+    <tr>
+      <td><%=f.label :subject%></td>
+      <td><%=collection_select(:student_class, :subject_id, Subject.all, :id, :name, { :selected => @selected_subject })%></td>        
+
+      <td width="155"></td>      
+      <td><%=f.label :description%></td>
+      <td><%=f.text_field(:description)%></td>      
+    </tr>
+    <tr>
+      <td><%= f.label :lounge %></td>
+      <td><%=f.select :lounge_id, option_groups_from_collection_for_select(Center.all, :lounges, :name, :id, :name, @selected_center)%></td>
+    </tr>        
+  </table>
+  <div style="position: absolute; left: 350px; top: 106px" id="days_of_week">
+          <table border="0">
+            <%@dayOfWeek.each do |dayOfWeek|%>
+              <tr>
+                <td><%=f.label dayOfWeek.abbreviation%></td>
+                <td><%=f.check_box dayOfWeek.abbreviation+"_check"%></td>         
+                <td><%=f.label "Start time"%></td>
+                <% if @student_class.errors[dayOfWeek.abbreviation+"_fromh"].any?%> 
+                    <td><%=f.text_field dayOfWeek.abbreviation+"_fromh", :class => "error_date_time", :maxlength=>"2"%></td>            
+                <%else%>
+                    <td><%=f.text_field dayOfWeek.abbreviation+"_fromh", :class => "date_time",  :maxlength=>"2"%></td>                
+                <%end%>
+                <td>:</td>          
+                <% if @student_class.errors[dayOfWeek.abbreviation+"_fromm"].any?%>  
+                    <td><%=f.text_field dayOfWeek.abbreviation+"_fromm", :class => "error_date_time", :maxlength=>"2"%></td>          
+                <%else%>
+                    <td><%=f.text_field dayOfWeek.abbreviation+"_fromm", :class => "date_time", :maxlength=>"2"%></td>
+                <%end%>
+                <td>_________</td>
+                <td><%=f.label "End time"%></td>   
+                <% if @student_class.errors[dayOfWeek.abbreviation+"_toh"].any?%>           
+                     <td><%=f.text_field dayOfWeek.abbreviation+"_toh", :class => "error_date_time", :maxlength=>"2"%></td>
+                <%else%>
+                     <td><%=f.text_field dayOfWeek.abbreviation+"_toh", :class => "date_time", :maxlength=>"2"%></td>
+                <%end%>
+                <td>:</td>  
+                <% if @student_class.errors[dayOfWeek.abbreviation+"_tom"].any?%>
+                  <td><%=f.text_field dayOfWeek.abbreviation+"_tom", :class => "error_date_time", :maxlength=>"2"%></td>
+                <%else%>
+                  <td><%=f.text_field dayOfWeek.abbreviation+"_tom", :class => "date_time", :maxlength=>"2"%></td>          
+              <%end%>
+              </tr>
+            <%end%>
+          </table>   
+  </div>
+        <div style="position: absolute; top: 110px; left: 800px;" id="div_student">
+          <table width="292" >
+            <tr align="center">
+              <td>STUDENTS</td>
+            </tr>
+          </table>
+          <div style="overflow: scroll; border: black 1px solid; height: 550px;">
+            <table width="292" class="altrowstable">
+            <tr class="headercolor">
+                <td align ="Center">Name</td>
+                <td align ="Center">Surname1</td>
+                <td align ="Center">Surname2</td>
+                <td align ="Center">Selector</td>              
+            </tr>                                            
+              <%cont_row=1
+              @all_students.each do |student| %>
+                  <%if cont_row%2==0%>
+                    <tr class="oddrowcolor">
+                  <%else%>
+                    <tr class="evenrowcolor">                    
+                  <%end
+                    cont_row = cont_row+1%>
+                        <td><%=f.label student.name%></td>
+                        <td><%=f.label student.surname1%></td>    
+                        <td><%=f.label student.surname2%></td>
+                      
+                        <%if student_list_selection(student.id) == true%>
+                            <td align="Center"><%=check_box_tag 'students_id[]', student.id, true%></td>
+                        <%else%>
+                            <td align="Center"><%=check_box_tag 'students_id[]', student.id, false%></td>
+                        <%end%>
+                    </tr>
+                <% end %>
+            </table> 
+          </div>
+        </div>
+        <div style="position: absolute; top: 110px; left: 0%;" id="div_teacher">        
+          <table  width="292">
+            <tr align="center">
+              <td>TEACHERS</td>
+            </tr>
+          </table>
+          <div style="overflow: scroll; border: black 1px solid; height: 550px;">
+               <table width="292" class="altrowstable">  
+                  <tr class="headercolor">
+                    <td align ="Center">Name</td>
+                    <td align ="Center">Surname1</td>
+                    <td align ="Center">Surname2</td>
+                    <td align ="Center">Selector</td>              
+                  </tr>                                
+                  <%cont_row=1
+                  @all_teachers.each do |teacher| %>
+                  <%if cont_row%2==0%>
+                      <tr class="oddrowcolor">
+                  <%else%>
+                      <tr class="evenrowcolor">
+                  <%end
+                    cont_row = cont_row+1%>
+                    <td><%=f.label teacher.name%></td>
+                    <td><%=f.label teacher.surname1%></td>
+                    <td><%=f.label teacher.surname2%></td>              
+                    <%if teacher_list_selection_student_class(teacher.id) == true%>
+                        <td align="Center"><%=check_box_tag 'teachers_id[]', teacher.id, true%></td>
+                    <%else%>
+                        <td align="Center"><%=check_box_tag 'teachers_id[]', teacher.id, false%></td>
+                    <%end%>
+                  </tr>    
+                <%end%>
+             </table>
+          </div>
+        </div>             
+
+  <div style="position:absolute; left: 320px; top: 310px; "id="div_classes">
+          <table>
+              <tr align="center"><td>CLASSES</td></tr>      
+              <tr style="top: 0%;"><td><%=table_classes%></td></tr>
+          </table>            
+  </div>
+<!--  <input name="Fade" value ="Show teacher" type="button" onclick="fade_element('div_teacher');"/>
+  <input name="Fade" value ="Show student" type="button" onclick="fade_element('div_student');"/>  
+  <div style="position: relative; padding-top: 10px; left: 15%"> -->
+<!----------------------------------------------------------->
+  <div style="position: absolute; padding-top: 10px">
+      <%= f.submit %>
+      <input name="Clear" value ="Clear" type="button" onclick="location.href='/StudentClassClear'"/>    
+      <input name="MainMenu" value ="Main menu" type="button" onclick="location.href='/mainMenu'"/>
+  </div>
+  </div>
+  <% if session[:error] != nil %>
+      <script>alert("<%=session[:error]%>")</script>
+      <%session[:error] = nil%>
+  <% end %>
+
+<%end%>
+</div>

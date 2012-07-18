@@ -1,0 +1,21 @@
+.centered_centers{
+    position: relative;
+    padding-top: 15px;
+    top: 15%;
+    left: 26%;
+}
+.input_centers_field{
+    position: relative;
+    left: 6%;    
+}
+.table_centers_div table{
+    position: relative;
+    left: 4%;
+    width: 700px;
+}
+.buttonCenter{
+    position: relative;
+    margin-left: 3%;
+    height: 50px;
+    width: 400px;
+}

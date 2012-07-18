@@ -1,0 +1,116 @@
+<div align="center" class="generalTitle">
+  <h1>TEACHERS</h1>
+</div>  
+<%= form_for(@teachers, :remote => true,  :html => { :id => 'teachers_form', :class=>'formClass'}) do |f| %>
+  <div class="centered_errors">
+    <%= render 'shared/error_message', :object => f.object  %>
+  </div>
+<div class="centered_teachers">
+  <div class="input_teachers_field">
+    <table border="0">
+      <tr>
+        <td><%= f.label :dni %></td>
+        <td>
+          <%= if @teachers.errors[:dni].any? 
+                 f.text_field(:dni, :class=>'error_field') 
+            else
+                 f.text_field(:dni, :class=>'input_text')         
+            end%>
+        </td>
+        <td><%= f.label :name %></td>
+        <td>
+          <%= if @teachers.errors[:name].any?     
+              f.text_field(:name, :class=>'error_field')
+          else
+              f.text_field(:name)    
+          end%>
+        </td>
+      </tr>
+      <tr>
+        <td><%= f.label :surname1 %></td>
+        <td>
+          <%=if @teachers.errors[:surname1].any?
+              f.text_field(:surname1, :class=>'error_field')        
+           else
+              f.text_field (:surname1)         
+           end%>
+        </td>
+        <td><%= f.label :surname2 %></td>
+        <td>
+          <%=if @teachers.errors[:surname2].any?
+              f.text_field(:surname2, :class=>'error_field')        
+           else
+              f.text_field (:surname2)         
+           end%>
+        </td>
+      </tr>
+      <tr>
+        <td><%= f.label :phone1 %></td>
+        <td>
+          <%=if @teachers.errors[:phone1].any?
+              f.text_field(:phone1,:class=>'error_field')
+          else
+              f.text_field (:phone1)        
+          end%>          
+        </td>    
+        <td><%= f.label :phone2 %></td>
+        <td><%= f.text_field :phone2 %></td>    
+      </tr>
+      <tr>
+        <td><%= f.label :address %></td>
+        <td>
+          <%=if @teachers.errors[:address].any?
+              f.text_field(:address,:class=>'error_field')
+          else
+              f.text_field (:address)        
+          end%>                
+        </td>        
+      </tr>
+
+    </table> 
+  </div>
+    <div class="tableSubjects_teacher_button">
+      <div class="tableSubjects_teacher">
+        <table  width="492">
+          <tr align="center">
+            <td><div class="titleTable"><h1>SUBJECTS</h1></div></td>
+          </tr>
+        </table>            
+        <table width="492" style="position: relative;" class="altrowstable">  
+          <tr class="headercolor">
+            <td align ="Center">Name</td>
+            <td align ="Center">Description</td>
+            <td align ="Center">Selector</td>              
+          </tr>                                
+          <%cont_row=1
+            @all_subjects.each do |subject| %>
+            <%if cont_row%2==0%>
+              <tr class="oddrowcolor">
+            <%else%>
+              <tr class="evenrowcolor">
+              <%end
+                cont_row = cont_row+1%>
+              <td><%=f.label subject.name%></td>
+              <td><%=f.label subject.description%></td>
+              <%if subject_list_selection_teacher(subject.id) == true%>
+                <td align="Center"><%=check_box_tag 'subjects_id[]', subject.id, true%></td>
+              <%else%>
+                <td align="Center"><%=check_box_tag 'subjects_id[]', subject.id, false%></td>
+              <%end%>
+              </tr>    
+            <%end%>
+        </table>
+      </div> 
+      <div class="buttonTeacher">
+        <a class="button_submit" title="Submit" href="/teacherAfterSubmit" onclick="$('#teachers_form').submit();" data-remote='true'></a>
+        <a class="button_clear" title="Clear screen" id="clearLink" data-remote='true' href="/teacherClear"></a>
+        <a class="button_menu" title="Main menu" id="menuink" data-remote='true' href='/mainMenu'></a>
+      </div>          
+    </div>
+    <div id ="table_teachers_div" style="position: relative;"><%=table_teachers%></div>
+      <% if session[:error] != nil %>
+          <script>alert("<%=session[:error]%>")</script>
+          <%session[:error] = nil%>
+      <% end %>    
+    <% end %>
+</div>

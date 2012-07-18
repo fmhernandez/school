@@ -1,0 +1,41 @@
+<div align="center" class="generalTitle">
+  <h1>CLASSROOMS</h1>
+</div>  
+<%= form_for(@lounges, :remote => true, :html => { :id => 'lounges_form', :class=>'formClass'}) do |f| %>
+  <div class="centered_errors">
+    <%= render 'shared/error_message', :object => f.object  %>
+  </div>
+<div class="centered_lounges">
+  <div class="input_lounges_field">
+    <table border ="0">
+      <tr>
+        <td><%= f.label :name%></td>
+        <td>
+          <%= if @lounges.errors[:name].any? 
+               f.text_field(:name, :class=>'error_field') 
+          else
+               f.text_field(:name)         
+          end%>      
+        </td>
+        <td><%= f.label :description %></td>
+        <td><%= f.text_field :description %></td>    
+      </tr>
+      <tr>
+        <td><%= f.label :center %></td>    
+        <td><%=collection_select(:lounge, :center_id, Center.all, :id, :name, { :selected => @selected_center })%></td>
+      </tr>  
+    </table>
+  </div>
+  <div class="buttonLounges">
+      <a class="button_submit" title="Submit" href="/teacherAfterSubmit" onclick="$('#lounges_form').submit();" data-remote='true'></a>
+      <a class="button_clear" title="Clear screen" id="clearLink" data-remote='true' href="/loungeClear"></a>
+      <a class="button_menu" title="Main menu" id="menuink" data-remote='true' href='/mainMenu'></a>
+  </div>   
+<div class ="table_lounges_div">
+<%=table_lounges%>  
+</div>
+
+    
+
+<% end %>
+</div>

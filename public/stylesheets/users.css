@@ -1,0 +1,22 @@
+.centered_users{
+    position: relative;
+    top: 15%;
+    left: 30%;
+    width: 800px;
+}
+.input_users_field{
+    position: relative;
+    left: 6%;    
+}
+.table_users_div{
+    position: relative;
+    left: 30%;
+    margin-top: 4%;
+    width: 300px;
+}
+.buttonUser{
+    position: relative;
+    margin-left: 3%;
+    height: 50px;
+    width: 400px;    
+}

@@ -1,0 +1,21 @@
+.centered_lounges{
+    position: relative;
+    top: 15%;
+    left: 30%;
+}
+.input_lounges_field{
+    position: relative;
+    left: 6%;        
+}
+.table_lounges_div table{
+   position: relative;
+    left: 4%;
+    margin-top: 4%;
+    width: 700px;
+}
+.buttonLounges{
+    position: relative;
+    margin-left: 3%;
+    height: 50px;
+    width: 400px;        
+}

@@ -1,0 +1,17 @@
+<%= form_for(:class_student, :url => class_students_path) do |f| %>
+<%= f.text_field :name %>
+        <table border="1">
+            <%@all_students.each do |student| %>
+                <tr>
+                    <td><%=f.label student.name%></td>
+                    <td><%=f.label student.surname1%></td>    
+                    <td><%=f.label student.surname2%></td>
+                    <td><%=check_box_tag 'student_ids[]', student.id,  false%></td>        
+                    <td><%="stud"+student.id.to_s%></td>                            
+                </tr>
+            <% end %>
+        </table>      
+<%= f.submit %>
+
+
+<% end %>

@@ -1,0 +1,11 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  lounge_id: 1
+  teacher_id: 1
+  studentgroup_id: 1
+
+two:
+  lounge_id: 1
+  teacher_id: 1
+  studentgroup_id: 1

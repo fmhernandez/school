@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Charlie Brown dancing school</title>
+  <%= javascript_include_tag 'menu.js' %>
+  <%= javascript_include_tag 'jquery.js', 'jquery_ujs.js' %>     
+  <%= csrf_meta_tag %>
+  <%= stylesheet_link_tag 'error'%>    
+  <%= stylesheet_link_tag 'general'%>
+  <%= stylesheet_link_tag 'menu'%>      
+  <style type="text/css">
+
+  </style>
+
+</script>  
+</head>
+<body>
+
+  <% flash.each do |key, value| %>
+    <div class="flash <%= key %>"><%= value %></div>
+  <% end %>  
+  <%= yield %>
+</body>
+</html>

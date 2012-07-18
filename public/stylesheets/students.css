@@ -1,0 +1,28 @@
+.centered_students{
+    position: relative;
+    top: 15%;
+    left: 30%;
+    width: 800px;
+}
+.centered_student_classes{
+    position: relative;
+    padding-top: 15px;
+    top: 15%;
+    left: 5%;
+}
+.buttonStudent{
+    position: relative;
+    margin-left: 3%;
+    height: 50px;
+    width: 400px;    
+}
+.input_students_field{
+    position: relative;
+    left: 6%;    
+}
+.table_students_div table{
+    position: relative;
+    left: 4%;
+    margin-top: 4%;
+    width: 700px;
+}

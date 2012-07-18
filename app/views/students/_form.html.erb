@@ -1,0 +1,66 @@
+<div align="center" class="generalTitle">
+  <h1>STUDENTS</h1>
+</div>  
+<%= form_for(@students, :remote => true, :html => { :id => 'students_form', :class=>'formClass'}) do |f| %>
+  <div class="centered_errors">
+    <%= render 'shared/error_message', :object => f.object  %>
+  </div>
+<div class="centered_students">
+  <div class="input_students_field">
+    <table border ="0">
+      <tr>
+        <td><%= f.label :name %></td>
+        <td>
+            <%= if @students.errors[:name].any? 
+                 f.text_field(:name, :class=>'error_field') 
+            else
+                 f.text_field(:name)         
+            end%>
+
+        </td>
+        <td><%= f.label :surname1 %></td>
+        <td>
+            <%= if @students.errors[:surname1].any?     
+                f.text_field(:surname1, :class=>'error_field')
+            else
+                f.text_field(:surname1)    
+            end%>
+        </td>    
+      </tr>
+      <tr>
+        <td><%= f.label :surname2 %></td>
+        <td>
+            <%=if @students.errors[:surname2].any?
+                f.text_field(:surname2, :class=>'error_field')        
+            else
+                f.text_field (:surname2)         
+            end%>
+        </td>
+        <td><%= f.label :email %></td>
+        <td><%= f.text_field :email %></td>    
+      </tr>  
+      <tr>
+        <td><%= f.label :phone1 %></td>
+        <td>
+            <%=if @students.errors[:phone1].any?
+               f.text_field(:phone1,:class=>'error_field')
+           else
+               f.text_field (:phone1)        
+           end%>    
+
+        </td>
+        <td><%= f.label :phone2 %></td>
+        <td><%= f.text_field :phone2 %></td>        
+      </tr> 
+    </table>
+  </div>
+  <div class="buttonStudent">
+      <a class="button_submit" title="Submit" href="/teacherAfterSubmit" onclick="$('#students_form').submit();" data-remote='true'></a>
+      <a class="button_clear" title="Clear screen" id="clearLink" data-remote='true' href="/studentClear"></a>
+      <a class="button_menu" title="Main menu" id="menuink" data-remote='true' href='/mainMenu'></a>
+  </div>   
+  <div class ="table_students_div">
+    <%=table_students%>
+  </div>
+<% end %>
+</div>

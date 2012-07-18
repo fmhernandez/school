@@ -1,0 +1,19 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  dni: 
+  name: 
+  surname1: 
+  surname2: 
+  phone1: 
+  phone2: 
+  address: 
+
+two:
+  dni: 
+  name: 
+  surname1: 
+  surname2: 
+  phone1: 
+  phone2: 
+  address: 

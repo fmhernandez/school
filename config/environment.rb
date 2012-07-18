@@ -1,0 +1,12 @@
+# -*- encoding : utf-8 -*-
+
+# Load the rails application
+require File.expand_path('../application', __FILE__)
+
+# Initialize the rails application
+DanceApp::Application.initialize!
+Encoding.default_external = Encoding::UTF_8
+Encoding.default_internal = Encoding::UTF_8
+logfile = File.open('log/customLog.log', 'a')  
+logfile.sync=true
+CustomLogger = Logger.new(logfile)

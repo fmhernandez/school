@@ -1,0 +1,45 @@
+  <script>
+    browser.cache.offline.enable = false
+
+  </script>
+<div class="main1">   <img src="../images/wallace_grommit.jpg" width="1024" height="768"> 
+    <div style="width: 400px;text-align: left;position: absolute;top: 35%;left: 36%;">    
+      <div class="box">
+        <div class="box2">
+          
+          <%=form_for(:session, :url => sessions_path) do |f|%>  
+            <table border="0" width="250">
+               <tr>
+                 <td>
+                   <%= f.label :name %>  
+                 </td>
+                 <td>
+                   <%= f.text_field :name %>               
+                 </td>
+               </tr>
+               <tr>
+                 <td>
+                   <%= f.label :password %>  
+                 </td>
+                 <td>
+                   <%= f.password_field :password %>               
+                 </td>
+               </tr>
+            </table>
+            <table border="0" width="100%">       
+               <tr>
+                 <td align="center">
+                   <!--<input type="button" name="buttonOk" value="Ok" size="10" onClick="location.href='mainMenu'" />-->
+                   <%= f.submit "Sign in" %>
+                 </td>
+               </tr>       
+            </table>
+          <%end%>
+        </div>
+       </div>
+     </div>   
+   </div>
+  <% if session[:error] != nil %>
+      <script>alert("<%=session[:error]%>")</script>
+      <%session[:error] = nil%>
+  <% end %>

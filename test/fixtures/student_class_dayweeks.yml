@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  student_class_id: MyString
+  dayweek_id: MyString
+  from_time: MyString
+  to_time: MyString
+
+two:
+  student_class_id: MyString
+  dayweek_id: MyString
+  from_time: MyString
+  to_time: MyString

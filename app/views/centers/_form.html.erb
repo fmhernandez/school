@@ -1,0 +1,48 @@
+<div align="center" class="generalTitle">
+  <h1>CENTERS</h1>
+</div>  
+<%= form_for(@center, :remote => true, :html => { :id => 'centerss_form', :class=>'formClass'}) do |f| %>
+  <div class="centered_errors">
+    <%= render 'shared/error_message', :object => f.object  %>
+  </div>
+  <div class="centered_centers">
+    <div class="input_centers_field">
+      <table border ="0">
+        <tr>
+          <td><%= f.label :label_name %></td>
+          <td>
+            <%= if @center.errors[:name].any? 
+               f.text_field(:name, :class=>'error_field') 
+            else
+               f.text_field(:name)         
+            end%>      
+          </td>
+          <td><%= f.label :address %></td>
+          <td>
+            <%= if @center.errors[:address].any? 
+               f.text_field(:address, :class=>'error_field') 
+            else
+               f.text_field(:address)
+            end%>            
+          </td>    
+        </tr>
+        <tr>
+          <td><%= f.label :description %></td>
+          <td><%= f.text_field :description %></td>
+        </tr> 
+      </table>      
+    </div>
+  <div class="buttonCenter">
+      <a class="button_submit" title="Submit" href="/teacherAfterSubmit" onclick="$('#centerss_form').submit();" data-remote='true'></a>
+      <a class="button_clear" title="Clear screen" id="clearLink" data-remote='true' href="/centerClear"></a>
+      <a class="button_menu" title="Main menu" id="menuink" data-remote='true' href='/mainMenu'></a>
+  </div>   
+<div class="table_centers_div">
+  <%=table_centers%>
+</div>
+  <% if session[:error] != nil %>
+      <script>alert("<%=session[:error]%>")</script>
+      <%session[:error] = nil%>
+  <% end %>
+<% end %>
+</div>

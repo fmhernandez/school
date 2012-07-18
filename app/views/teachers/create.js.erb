@@ -1,0 +1,12 @@
+$("#working_area").html("<%=escape_javascript(render('form'))%>");
+<%
+   errors = "
+   <p>Please fix the following errors:</p>
+   <ul>
+     #{@teachers.errors.collect{|err| "<li>" + err[0] + " " + err[1] + "</li>" } }
+   </ul>"
+   
+ %>
+$("#error-message").html("<%="<ul>Error1</ul>".html_safe%>");
+$("#error-message").show;
+console.log('CREATE.JS.ERB');

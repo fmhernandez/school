@@ -1,0 +1,26 @@
+.centered_subjects{
+    position: relative;
+    top: 15%;
+    left: 35%;
+}
+.buttonSubject{
+    position: relative;
+    left: -5%;
+    height: 50px;
+    width: 400px;    
+}
+.input_subjects_field{
+    position: relative;
+    left: 0%;        
+}
+.table_subjects_div table{
+    position: relative;
+    left: -2%;
+    margin-top: 4%;
+    width: 700px;
+}
+.tableTeachers_subject {
+    position: relative;
+    left: 10%;
+    width: 80%        
+}
